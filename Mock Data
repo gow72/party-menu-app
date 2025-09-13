@@ -1,0 +1,43 @@
+export const dishes = [
+  {
+    id: 1,
+    name: "Kadhai Paneer",
+    description: "Paneer cubes in spicy onion gravy with onions and capsicum cubes.",
+    image: "https://placehold.co/300x200/F7D0B3/422402?text=Kadhai+Paneer",
+    mealType: "MAIN COURSE",
+    type: "VEG",
+    ingredients: [
+      { name: "Paneer", quantity: "200g" },
+      { name: "Onion", quantity: "2 large" },
+      { name: "Capsicum", quantity: "1 large" },
+      { name: "Tomato Puree", quantity: "1 cup" }
+    ]
+  },
+  {
+    id: 2,
+    name: "Chicken Curry",
+    description: "Tender chicken cooked in spicy curry sauce.",
+    image: "https://placehold.co/300x200/FFC0CB/422402?text=Chicken+Curry",
+    mealType: "MAIN COURSE",
+    type: "NON-VEG",
+    ingredients: [
+      { name: "Chicken", quantity: "500g" },
+      { name: "Onion", quantity: "2 large" },
+      { name: "Ginger Garlic Paste", quantity: "2 tsp" }
+    ]
+  },
+  {
+    id: 3,
+    name: "Spring Rolls",
+    description: "Crispy vegetable spring rolls.",
+    image: "https://placehold.co/300x200/ADD8E6/422402?text=Spring+Rolls",
+    mealType: "STARTER",
+    type: "VEG",
+    ingredients: [
+      { name: "Cabbage", quantity: "100g" },
+      { name: "Carrot", quantity: "50g" },
+      { name: "Spring Roll Sheets", quantity: "5 pcs" }
+    ]
+  }
+  // Add more dishes similarly
+];
