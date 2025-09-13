@@ -1,0 +1,10 @@
+src/
+├── components/
+│   ├── DishCard.js
+│   ├── DishList.js
+│   ├── Filters.js
+│   └── IngredientModal.js
+├── data/
+│   └── mockDishes.js
+├── App.js
+└── App.css
