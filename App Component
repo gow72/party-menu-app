@@ -1,0 +1,62 @@
+import React, { useState } from 'react';
+import './App.css';
+import { dishes } from './data/mockDishes';
+import Filters from './components/Filters';
+import DishList from './components/DishList';
+import IngredientModal from './components/IngredientModal';
+
+function App() {
+  const [selectedCategory, setSelectedCategory] = useState("STARTER");
+  const [searchTerm, setSearchTerm] = useState("");
+  const [vegOnly, setVegOnly] = useState(false);
+  const [selectedDishes, setSelectedDishes] = useState([]);
+  const [currentDish, setCurrentDish] = useState(null);
+
+  const filteredDishes = dishes.filter(dish => 
+    dish.mealType === selectedCategory &&
+    dish.name.toLowerCase().includes(searchTerm.toLowerCase()) &&
+    (!vegOnly || dish.type === "VEG")
+  );
+
+  const addDish = (id) => setSelectedDishes([...selectedDishes, id]);
+  const removeDish = (id) => setSelectedDishes(selectedDishes.filter(d => d !== id));
+  const viewIngredients = (dish) => setCurrentDish(dish);
+  const closeModal = () => setCurrentDish(null);
+
+  return (
+    <div className="app-container">
+      <h1>Party Menu Selection</h1>
+
+      <Filters
+        activeCategory={selectedCategory}
+        onCategoryChange={setSelectedCategory}
+        searchTerm={searchTerm}
+        onSearchChange={setSearchTerm}
+        vegOnly={vegOnly}
+        onVegOnlyChange={setVegOnly}
+      />
+
+      <DishList
+        dishes={filteredDishes}
+        selectedDishes={selectedDishes}
+        onAddDish={addDish}
+        onRemoveDish={removeDish}
+        onViewIngredients={viewIngredients}
+      />
+
+      <IngredientModal dish={currentDish} onClose={closeModal} />
+
+      <div className="summary">
+        <h3>Selected Dishes:</h3>
+        <ul>
+          {selectedDishes.map(id => {
+            const dish = dishes.find(d => d.id === id);
+            return <li key={id}>{dish.name}</li>;
+          })}
+        </ul>
+      </div>
+    </div>
+  );
+}
+
+export default App;
